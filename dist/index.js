@@ -133,7 +133,7 @@ function _TikTokSearch() {
                 while (1) switch (_context5.prev = _context5.next) {
                   case 0:
                     _context5.next = 2;
-                    return fetchTikTokSearch("hello", ttwid);
+                    return fetchTikTokSearch(keyword, ttwid);
                   case 2:
                     search1 = _context5.sent;
                     searchId = search1[0].common.doc_id_str;

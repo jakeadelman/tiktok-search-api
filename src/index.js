@@ -56,7 +56,7 @@ async function fetchTikTokSearch2(keyword, offset, searchId, ttwid) {
 }
 async function TikTokSearch(keyword, ttwid, pages) {
   return new Promise(async (resolve) => {
-    let search1 = await fetchTikTokSearch("hello", ttwid);
+    let search1 = await fetchTikTokSearch(keyword, ttwid);
     let searchId = search1[0].common.doc_id_str;
     let finalArr = [];
     for (let i = 1; i < pages; i++) {
