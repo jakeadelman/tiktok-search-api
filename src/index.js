@@ -10,19 +10,22 @@ async function fetchTikTokSearch(keyword, ttwid) {
     for (let b = 0; b < ops.length; b++) {
       urlString = urlString + ops[b].name + "=" + ops[b].val + "&";
     }
-
-    fetch(urlString, {
-      method: "GET",
-      headers: {
-        Cookie: cookieString,
-      },
-    })
-      .then((res) => {
-        return res.json();
+    try {
+      fetch(urlString, {
+        method: "GET",
+        headers: {
+          Cookie: cookieString,
+        },
       })
-      .then((data) => {
-        resolve(data.data);
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          resolve(data.data);
+        });
+    } catch (err) {
+      console.log(err);
+    }
   });
 }
 async function fetchTikTokSearch2(keyword, offset, searchId, ttwid) {
@@ -40,18 +43,22 @@ async function fetchTikTokSearch2(keyword, offset, searchId, ttwid) {
       urlString = urlString + ops[b].name + "=" + ops[b].val + "&";
     }
 
-    fetch(urlString, {
-      method: "GET",
-      headers: {
-        Cookie: cookieString,
-      },
-    })
-      .then((res) => {
-        return res.json();
+    try {
+      fetch(urlString, {
+        method: "GET",
+        headers: {
+          Cookie: cookieString,
+        },
       })
-      .then((data) => {
-        resolve(data.data);
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          resolve(data.data);
+        });
+    } catch (err) {
+      console.log(err);
+    }
   });
 }
 async function TikTokSearch(keyword, ttwid, pages) {

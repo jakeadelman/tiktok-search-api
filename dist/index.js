@@ -30,16 +30,20 @@ function _fetchTikTokSearch() {
                     for (b = 0; b < ops.length; b++) {
                       urlString = urlString + ops[b].name + "=" + ops[b].val + "&";
                     }
-                    fetch(urlString, {
-                      method: "GET",
-                      headers: {
-                        Cookie: cookieString
-                      }
-                    }).then(function (res) {
-                      return res.json();
-                    }).then(function (data) {
-                      resolve(data.data);
-                    });
+                    try {
+                      fetch(urlString, {
+                        method: "GET",
+                        headers: {
+                          Cookie: cookieString
+                        }
+                      }).then(function (res) {
+                        return res.json();
+                      }).then(function (data) {
+                        resolve(data.data);
+                      });
+                    } catch (err) {
+                      console.log(err);
+                    }
                   case 5:
                   case "end":
                     return _context.stop();
@@ -90,16 +94,20 @@ function _fetchTikTokSearch2() {
                     for (b = 0; b < ops.length; b++) {
                       urlString = urlString + ops[b].name + "=" + ops[b].val + "&";
                     }
-                    fetch(urlString, {
-                      method: "GET",
-                      headers: {
-                        Cookie: cookieString
-                      }
-                    }).then(function (res) {
-                      return res.json();
-                    }).then(function (data) {
-                      resolve(data.data);
-                    });
+                    try {
+                      fetch(urlString, {
+                        method: "GET",
+                        headers: {
+                          Cookie: cookieString
+                        }
+                      }).then(function (res) {
+                        return res.json();
+                      }).then(function (data) {
+                        resolve(data.data);
+                      });
+                    } catch (err) {
+                      console.log(err);
+                    }
                   case 5:
                   case "end":
                     return _context3.stop();
