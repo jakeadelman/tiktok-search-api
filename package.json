@@ -6,6 +6,12 @@
   "scripts": {
     "build": "babel src -d dist"
   },
+  "keywords": [
+    "tiktok",
+    "tiktok api",
+    "tiktok search",
+    "tiktok search npm"
+  ],
   "author": "jakeadelman",
   "license": "MIT",
   "devDependencies": {
