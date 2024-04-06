@@ -11,7 +11,7 @@ npm install tiktok-search-api
 ```
 import { TikTokSearch } from 'tiktok-search-api'
 
-const results = TikTokSearch(keyword, ttwid, pageCount)
+const results = await TikTokSearch(keyword, ttwid, pageCount)
 ```
 
 ## Arguments
