@@ -144,30 +144,39 @@ function _TikTokSearch() {
                     return fetchTikTokSearch(keyword, ttwid);
                   case 2:
                     search1 = _context5.sent;
+                    if (!(search1 && search1.length > 0)) {
+                      _context5.next = 19;
+                      break;
+                    }
                     searchId = search1[0].common.doc_id_str;
                     finalArr = [];
                     i = 1;
-                  case 6:
+                  case 7:
                     if (!(i < pages)) {
-                      _context5.next = 16;
+                      _context5.next = 17;
                       break;
                     }
                     iPlus = i + 1;
-                    _context5.next = 10;
+                    _context5.next = 11;
                     return fetchTikTokSearch2(keyword, iPlus * 12, searchId, ttwid);
-                  case 10:
+                  case 11:
                     myArr = _context5.sent;
-                    myArr.map(function (arrItem) {
+                    myArr === null || myArr === void 0 || myArr.map(function (arrItem) {
                       finalArr.push(arrItem);
                     });
                     if (i == pages - 1) {
                       resolve(finalArr);
                     }
-                  case 13:
+                  case 14:
                     i++;
-                    _context5.next = 6;
+                    _context5.next = 7;
                     break;
-                  case 16:
+                  case 17:
+                    _context5.next = 20;
+                    break;
+                  case 19:
+                    resolve([]);
+                  case 20:
                   case "end":
                     return _context5.stop();
                 }

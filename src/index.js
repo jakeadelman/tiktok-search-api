@@ -64,22 +64,26 @@ async function fetchTikTokSearch2(keyword, offset, searchId, ttwid) {
 async function TikTokSearch(keyword, ttwid, pages) {
   return new Promise(async (resolve) => {
     let search1 = await fetchTikTokSearch(keyword, ttwid);
-    let searchId = search1[0].common.doc_id_str;
-    let finalArr = [];
-    for (let i = 1; i < pages; i++) {
-      let iPlus = i + 1;
-      let myArr = await fetchTikTokSearch2(
-        keyword,
-        iPlus * 12,
-        searchId,
-        ttwid
-      );
-      myArr.map((arrItem) => {
-        finalArr.push(arrItem);
-      });
-      if (i == pages - 1) {
-        resolve(finalArr);
+    if (search1 && search1.length > 0) {
+      let searchId = search1[0].common.doc_id_str;
+      let finalArr = [];
+      for (let i = 1; i < pages; i++) {
+        let iPlus = i + 1;
+        let myArr = await fetchTikTokSearch2(
+          keyword,
+          iPlus * 12,
+          searchId,
+          ttwid
+        );
+        myArr?.map((arrItem) => {
+          finalArr.push(arrItem);
+        });
+        if (i == pages - 1) {
+          resolve(finalArr);
+        }
       }
+    } else {
+      resolve([]);
     }
   });
 }
