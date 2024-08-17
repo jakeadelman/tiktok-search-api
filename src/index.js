@@ -1,6 +1,6 @@
-async function fetchTikTokSearch(keyword, ttwid) {
+async function fetchTikTokSearch(keyword, ttwid, cookies) {
   return new Promise(async (resolve) => {
-    let cookieString = "ttwid=" + ttwid + ";";
+    let cookieString = ttwid == null ? cookies : "ttwid=" + ttwid + ";";
     let urlString = `https://www.tiktok.com/api/search/general/full/?`;
     let ops = [
       { name: "from_page", val: "search" },
@@ -28,9 +28,9 @@ async function fetchTikTokSearch(keyword, ttwid) {
     }
   });
 }
-async function fetchTikTokSearch2(keyword, offset, searchId, ttwid) {
+async function fetchTikTokSearch2(keyword, offset, searchId, ttwid, cookies) {
   return new Promise(async (resolve) => {
-    let cookieString = "ttwid=" + ttwid + ";";
+    let cookieString = ttwid == null ? cookies : "ttwid=" + ttwid + ";";
     let urlString = `https://www.tiktok.com/api/search/general/full/?`;
     let ops = [
       { name: "from_page", val: "search" },
@@ -61,9 +61,9 @@ async function fetchTikTokSearch2(keyword, offset, searchId, ttwid) {
     }
   });
 }
-async function TikTokSearch(keyword, ttwid, pages) {
+async function TikTokSearch(keyword, ttwid, pages, cookies) {
   return new Promise(async (resolve) => {
-    let search1 = await fetchTikTokSearch(keyword, ttwid);
+    let search1 = await fetchTikTokSearch(keyword, ttwid, cookies);
     if (search1 && search1.length > 0) {
       let searchId = search1[0].common.doc_id_str;
       let finalArr = [];
@@ -73,7 +73,8 @@ async function TikTokSearch(keyword, ttwid, pages) {
           keyword,
           iPlus * 12,
           searchId,
-          ttwid
+          ttwid,
+          cookies
         );
         myArr?.map((arrItem) => {
           finalArr.push(arrItem);
